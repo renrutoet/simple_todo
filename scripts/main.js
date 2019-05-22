@@ -9,8 +9,17 @@ inputBtn.addEventListener("click",function(){
 
     let task = document.createElement("li");
     let deleteBtn = document.createElement("span");
-    deleteBtn.innerHTML = " delete";
-    task.innerHTML = input.value + deleteBtn.innerHTML;
+    deleteBtn.innerHTML = "delete";
+    deleteBtn.classList.add("delete");
+
+    deleteBtn.addEventListener("click",function(){
+        this.parentNode.parentNode.removeChild(this.parentNode);
+    });
+    
+    task.innerHTML = input.value;
+    task.appendChild(deleteBtn);
+
+    
 
     list.appendChild(task);
 
