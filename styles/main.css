@@ -1,13 +1,49 @@
+html {
+    height: 100%;
+}
 body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: grey;
+    background-color: lightgrey;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height : 100%;
+}
+
+.main-item {
+    height:50px;
+    margin: 0;
+    background-color: white;
+}
+
+.list {
+    margin: 0;
+    padding: 10px;
+    list-style: none;
 }
 
 .delete {
+    padding: 5px;
     background-color: red;
 }
 
 .edit {
+    padding: 5px;
     background-color: green;
+}
+
+#input {
+    border:0;
+    padding: 1em;
+}
+
+#addBtn {
+    border:0;
+    padding: 0;
+    height:100%;
 }

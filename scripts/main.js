@@ -91,6 +91,7 @@ inputBtn.addEventListener("click",function(){
         list.appendChild(confirmBtn);
     });
     
+    
     //DOM interaction
     task.appendChild(editBtn);
     task.appendChild(deleteBtn);
