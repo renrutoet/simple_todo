@@ -16,6 +16,7 @@ inputBtn.addEventListener("click",function(){
     let deleteBtn = document.createElement("span");
     deleteBtn.innerHTML = "Delete";
     deleteBtn.classList.add("delete");
+    //deleteBtn.classList.add("right");
 
     deleteBtn.addEventListener("click",function(){
         this.parentNode.parentNode.removeChild(this.parentNode);
