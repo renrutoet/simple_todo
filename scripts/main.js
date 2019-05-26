@@ -7,18 +7,29 @@ const list = document.querySelector("#todoList");
 
 inputBtn.addEventListener("click",function(){
 
+    console.log("test1");
+
+    //create divs for grid
+    var leftDiv = document.createElement("div");
+    leftDiv.classList.add("left");
+
+    var rightDiv = document.createElement("div");
+    rightDiv.classList.add("right");
+
     //task input box
     var task = document.createElement("li");
+    task.classList.add("test")
     var inputValue = input.value;
-    task.innerHTML = inputValue;
+    leftDiv.innerHTML = inputValue;
 
     //delete button
     let deleteBtn = document.createElement("span");
     deleteBtn.innerHTML = "Delete";
     deleteBtn.classList.add("delete");
+    deleteBtn.classList.add("right");
 
     deleteBtn.addEventListener("click",function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
     });
 
     //edit button
@@ -26,6 +37,7 @@ inputBtn.addEventListener("click",function(){
     let editBtn = document.createElement("span");
     editBtn.innerHTML = "Edit"
     editBtn.classList.add("edit");
+    editBtn.classList.add("right");
 
     //on click remove task on list and replace with input box for editing
     editBtn.addEventListener("click",function(){
@@ -34,7 +46,7 @@ inputBtn.addEventListener("click",function(){
         let oldTaskText = inputValue;
         
         //removes list item to be replaced by the input element
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
 
         //create input element for editing the value
         let newTaskInput = document.createElement("input");
@@ -56,17 +68,25 @@ inputBtn.addEventListener("click",function(){
 
             //recreate old list item
             let oldTask = document.createElement("li");
-            oldTask.innerHTML = oldTaskText;
+            //oldTask.innerHTML = oldTaskText;
+            oldTask.classList.add("test");
+            oldTask.appendChild(leftDiv);
+            oldTask.appendChild(rightDiv);
 
             //add back into the DOM
-            oldTask.appendChild(editBtn);
-            oldTask.appendChild(deleteBtn);
+            //oldTask.appendChild(editBtn);
+            //oldTask.appendChild(deleteBtn);
+            //add left & right divs here
             list.appendChild(oldTask);
         });
 
+        //------------------------end of cancel button
+
+        //confirm button
         let confirmBtn = document.createElement("span");
         confirmBtn.innerHTML = "Confirm";
         confirmBtn.classList.add("edit");
+        confirmBtn.classList.add("right");
 
         confirmBtn.addEventListener("click",function(){
             //remove buttons
@@ -76,12 +96,17 @@ inputBtn.addEventListener("click",function(){
 
             //store new value as new task
             let newTask = document.createElement("li");
-            newTask.innerHTML = newTaskInput.value;
+            leftDiv.innerHTML = newTaskInput.value;
             inputValue = newTaskInput.value;
+            newTask.classList.add("test");
 
             //add back into the DOM
-            newTask.appendChild(editBtn);
-            newTask.appendChild(deleteBtn);
+            rightDiv.appendChild(editBtn);
+            rightDiv.appendChild(deleteBtn);
+            newTask.appendChild(leftDiv);
+            newTask.appendChild(rightDiv);
+            //newTask.appendChild(editBtn);
+            //newTask.appendChild(deleteBtn);
             list.appendChild(newTask);
         });
 
@@ -90,11 +115,16 @@ inputBtn.addEventListener("click",function(){
         list.appendChild(cancelBtn);
         list.appendChild(confirmBtn);
     });
+
+    //------------------ End of Edit mode
     
-    
+    console.log("test2");
+
     //DOM interaction
-    task.appendChild(editBtn);
-    task.appendChild(deleteBtn);
+    rightDiv.appendChild(editBtn);
+    rightDiv.appendChild(deleteBtn);
+    task.appendChild(leftDiv);
+    task.appendChild(rightDiv);
     list.appendChild(task);
 
 });

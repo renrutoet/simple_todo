@@ -23,27 +23,46 @@ body {
 
 .list {
     margin: 0;
-    padding: 10px;
+    padding: 0;
     list-style: none;
 }
 
 .delete {
-    padding: 5px;
+    padding: 0;
     background-color: red;
 }
 
 .edit {
-    padding: 5px;
+    padding: 0;
     background-color: green;
 }
 
 #input {
     border:0;
-    padding: 1em;
+    margin: 1em;
 }
 
 #addBtn {
     border:0;
     padding: 0;
     height:100%;
+}
+
+/* List layout */
+
+.test {
+    display: grid;
+}
+
+.inline-test {
+    display: inline-flex;
+}
+
+.left {
+    grid-column: 1;
+}
+
+.right {
+    justify-self: end;
+    grid-column: 2;
 }
