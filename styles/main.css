@@ -12,19 +12,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     height : 100%;
 }
 
 .main-item {
-    height:50px;
     margin: 0;
     background-color: white;
+    overflow: hidden;
 }
 
 .list {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.list > li {
+    background-color: lightblue;
+}
+
+.list:nth-child(2) {
+    background-color: red;
+}
+
+.right {
+    margin-top: auto;
 }
 
 .delete {
