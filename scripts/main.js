@@ -7,8 +7,6 @@ const list = document.querySelector("#todoList");
 
 inputBtn.addEventListener("click",function(){
 
-    console.log("test1");
-
     //create divs for grid
     var leftDiv = document.createElement("div");
     leftDiv.classList.add("left");
@@ -18,7 +16,7 @@ inputBtn.addEventListener("click",function(){
 
     //task input box
     var task = document.createElement("li");
-    task.classList.add("test")
+    task.classList.add("grid")
     var inputValue = input.value;
     leftDiv.innerHTML = inputValue;
 
@@ -69,7 +67,7 @@ inputBtn.addEventListener("click",function(){
             //recreate old list item
             let oldTask = document.createElement("li");
             //oldTask.innerHTML = oldTaskText;
-            oldTask.classList.add("test");
+            oldTask.classList.add("grid");
             oldTask.appendChild(leftDiv);
             oldTask.appendChild(rightDiv);
 
@@ -98,7 +96,7 @@ inputBtn.addEventListener("click",function(){
             let newTask = document.createElement("li");
             leftDiv.innerHTML = newTaskInput.value;
             inputValue = newTaskInput.value;
-            newTask.classList.add("test");
+            newTask.classList.add("grid");
 
             //add back into the DOM
             rightDiv.appendChild(editBtn);
@@ -118,7 +116,7 @@ inputBtn.addEventListener("click",function(){
 
     //------------------ End of Edit mode
     
-    console.log("test2");
+    console.log("grid2");
 
     //DOM interaction
     rightDiv.appendChild(editBtn);
@@ -128,7 +126,4 @@ inputBtn.addEventListener("click",function(){
     list.appendChild(task);
 
 });
-
-
-
 };

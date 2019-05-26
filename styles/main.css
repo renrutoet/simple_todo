@@ -1,5 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
+    box-sizing: border-box;
 }
 body {
     height: 100%;
@@ -41,13 +46,14 @@ body {
 }
 
 .delete {
-    padding: 0;
+    padding: 1em;
     background-color: red;
 }
 
 .edit {
-    padding: 0;
+    padding: 1em;
     background-color: green;
+    height: 100%;
 }
 
 #input {
@@ -63,8 +69,10 @@ body {
 
 /* List layout */
 
-.test {
+.grid {
     display: grid;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .inline-test {
@@ -76,6 +84,8 @@ body {
 }
 
 .right {
+    box-sizing: content-box;
+    align-items: stretch;
     justify-self: end;
     grid-column: 2;
 }
