@@ -14,14 +14,20 @@ body {
 }
 
 .container {
+    /*
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     height : 100%;
+    */
+    height : 100%;
 }
 
 .main-item {
+    position: absolute;
+    top: 40%;
+    left:40%;
     margin: 0;
     background-color: white;
     overflow: hidden;
@@ -37,8 +43,8 @@ body {
     background-color: lightblue;
 }
 
-.list:nth-child(2) {
-    background-color: red;
+.list > li:nth-child(2n) {
+    background-color: gray;
 }
 
 .right {
@@ -46,12 +52,12 @@ body {
 }
 
 .delete {
-    padding: 1em;
+    padding: 0.5em;
     background-color: red;
 }
 
 .edit {
-    padding: 1em;
+    padding: 0.5em;
     background-color: green;
     height: 100%;
 }
@@ -71,8 +77,9 @@ body {
 
 .grid {
     display: grid;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border:none;
 }
 
 .inline-test {
