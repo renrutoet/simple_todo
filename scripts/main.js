@@ -1,9 +1,48 @@
 window.onload = function(){
 
+    
+
 
 const input = document.querySelector("#input");
 const inputBtn = document.querySelector("#addBtn");
 const list = document.querySelector("#todoList");
+
+class Task {
+
+    createButton(className, text){
+        let button = document.createElement("span");
+        button.innerHTML = text;
+        button.classList.add(className);
+
+        button.toggleHide = function() {
+            this.classList.toggle("hide");
+        }
+
+        return button;
+    }
+
+    constructor(inputBox){
+        //Every task will have a value + 4 buttons: edit,delete,cancel,confirm
+        //the buttons edit,delete will be visible initially and cancel & confirm will be visible after clicking edit
+        this.value = inputBox.value;
+        this.editButton = this.createButton("edit","Edit");
+        this.deleteButton = this.createButton("delete","Delete");
+        this.cancelButton = this.createButton("cancel","Cancel");
+        this.confirmButton = this.createButton("confirm","Confirm");
+
+    }
+
+    
+}
+
+var task1 = new Task(input);
+
+console.log(task1);
+task1.toggleHide(task1.editButton);
+task1.deleteButton.toggleHide();
+console.log(task1);
+
+
 
 inputBtn.addEventListener("click",function(){
 
@@ -127,3 +166,4 @@ inputBtn.addEventListener("click",function(){
 
 });
 };
+

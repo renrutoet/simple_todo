@@ -96,3 +96,7 @@ body {
     justify-self: end;
     grid-column: 2;
 }
+
+.hide {
+    display:none;
+}
