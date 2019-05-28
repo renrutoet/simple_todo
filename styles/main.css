@@ -10,17 +10,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: lightgrey;
+    background-color: paleturquoise;
 }
 
 .container {
-    /*
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    height : 100%;
-    */
     height : 100%;
 }
 
@@ -44,7 +37,7 @@ body {
 }
 
 .list > li:nth-child(2n) {
-    background-color: gray;
+    background-color: palegoldenrod;
 }
 
 .right {
@@ -56,21 +49,42 @@ body {
     background-color: red;
 }
 
+.delete:hover {
+    transition: 0.5s;
+    background-color: lightcoral;
+}
+
 .edit {
     padding: 0.5em;
     background-color: green;
     height: 100%;
 }
 
+.edit:hover {
+    transition: 0.5s;
+    background-color: lightgreen;
+}
+
+
+
 #input {
+    height: 100%;
     border:0;
-    margin: 1em;
+    margin: auto;
+    padding:1em;
 }
 
 #addBtn {
-    border:0;
-    padding: 0;
-    height:100%;
+    box-sizing: border-box;
+    border:none;
+    margin:auto;
+    padding: 1em;
+    height:inherit;
+}
+
+#addBtn:hover {
+    transition: 0.5s;
+    background-color: darkslategray;
 }
 
 /* List layout */
@@ -87,6 +101,7 @@ body {
 }
 
 .left {
+    margin-left: 10px;
     grid-column: 1;
 }
 

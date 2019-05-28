@@ -7,33 +7,43 @@ const list = document.querySelector("#todoList");
 
 inputBtn.addEventListener("click",function(){
 
-    //create divs for grid
+    //create divs for grid inside each list item
+    //this has the task value
     var leftDiv = document.createElement("div");
     leftDiv.classList.add("left");
 
+    //this will be for buttons
     var rightDiv = document.createElement("div");
     rightDiv.classList.add("right");
 
-    //task input box
+    //create list element for new task
     var task = document.createElement("li");
-    task.classList.add("grid")
+    task.classList.add("grid");
+    //take value from the input box, display in the left
     var inputValue = input.value;
+    if(inputValue == ""){
+        alert("please enter a task");
+        return;
+    }
     leftDiv.innerHTML = inputValue;
+    input.value = "";
 
     //delete button
     let deleteBtn = document.createElement("span");
-    deleteBtn.innerHTML = "Delete";
+    deleteBtn.innerHTML = "<i class=\"far fa-times-circle\"></i>";
     deleteBtn.classList.add("delete");
     deleteBtn.classList.add("right");
 
     deleteBtn.addEventListener("click",function(){
-        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        let ulElement = this.parentNode.parentNode.parentNode;
+        let liElement = this.parentNode.parentNode;
+        ulElement.removeChild(liElement);
     });
 
     //edit button
     //create edit button
     let editBtn = document.createElement("span");
-    editBtn.innerHTML = "Edit"
+    editBtn.innerHTML = "<i class=\"fas fa-edit\"></i>";
     editBtn.classList.add("edit");
     editBtn.classList.add("right");
 
