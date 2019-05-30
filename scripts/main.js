@@ -1,18 +1,125 @@
+
+
 window.onload = function(){
+
 
 const input = document.querySelector("#input");
 const inputBtn = document.querySelector("#addBtn");
 const list = document.querySelector("#todoList");
 
 
+class Task {
+
+    constructor(){
+
+        //context
+        this.context = {context:this};
+
+        //task value
+        this.value = input.value;
+
+        //create li container
+        this.taskDOMElement = document.createElement("li");
+        this.taskDOMElement.classList.add("grid");
+
+        this.leftDiv = document.createElement("div");
+        this.rightDiv = document.createElement("div");
+
+        this.leftDiv.innerHTML = "input.value";
+
+        this.leftDiv.classList.add("left");
+        this.rightDiv.classList.add("right");
+
+
+        // -----------------------------------------------------------
+
+            //create edit & delete buttons
+            this.editButton = document.createElement("span");
+            this.deleteButton = document.createElement("span");
+
+            //create the innerHTML
+            this.editButton.innerHTML = "Edit";
+            this.deleteButton.innerHTML = "Delete";
+
+            //add styling
+            this.editButton.classList.add("edit");
+            this.deleteButton.classList.add("delete");
+
+        // -------------------------------------------------------------
+
+            //create cancel & confirm buttons
+            this.cancelButton = document.createElement("span");
+            this.confirmButton = document.createElement("span");
+
+            //create the innerHTML
+            this.cancelButton.innerHTML = "Cancel";
+            this.confirmButton.innerHTML = "Confirm";
+            
+            //add styling
+            this.cancelButton.classList.add("delete");
+            this.confirmButton.classList.add("edit");
+            this.cancelButton.classList.add("hide");
+            this.confirmButton.classList.add("hide");
+
+        // ----------------------------------------------------------------
+
+        //  Assemble all the elements under the li element ready for adding to the DOM
+        this.rightDiv.appendChild(this.editButton);
+        this.rightDiv.appendChild(this.deleteButton);
+
+        this.rightDiv.appendChild(this.confirmButton);
+        this.rightDiv.appendChild(this.cancelButton);
+
+        this.taskDOMElement.appendChild(this.leftDiv);
+        this.taskDOMElement.appendChild(this.rightDiv);
+
+
+        //now for button behaviour
+
+        //We need to use .bind() to pass in the 'context'of this task instance.
+        this.deleteButton.addEventListener("click", this.deleteTask.bind(this));
+
+        this.editButton.addEventListener("click",this.toggleElements.bind(this));
+
+
+
+
+    }
+
+    toggleElements (){
+        this.deleteButton.classList.toggle("hide");
+        this.editButton.classList.toggle("hide");
+
+        this.cancelButton.classList.toggle("hide");
+        this.confirmButton.classList.toggle("hide");
+    }
+
+    deleteTask(){
+        this.taskDOMElement.parentNode.removeChild(this.taskDOMElement);
+    }
+
+
+    addToDom(){
+        var target = document.querySelector("#todoList");
+        console.log(target);
+        target.appendChild(this.taskDOMElement);
+    }
+
+    logValue(){
+        console.log(this.value);
+    }
+
+}
+
+task1 = new Task();
+task1.addToDom();
+task1.logValue();
+// task1.deleteTask();
+console.log(task1);
+
+
 inputBtn.addEventListener("click",function(){
 
-
-    
-    //   console.log(task1);
-
-    //   console.log(task1.editButton);
-    
 
     //create divs for grid
     var leftDiv = document.createElement("div");
