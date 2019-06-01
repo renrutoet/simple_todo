@@ -15,6 +15,7 @@ class Task {
 
         //task value
         this.value = input.value;
+        this.index = Task.incrementIndex();
 
         //create li container
         this.taskDOMElement = document.createElement("li");
@@ -140,13 +141,18 @@ class Task {
     }
 
     deleteTask(){
+        console.log(this.index);
+        console.log(taskList[this.index]);
+        console.log(taskList);
+        taskList.splice(this.index - 1,1);
+        console.log(this.index);
+        console.log(taskList[this.index]);
+        console.log(taskList);
         this.taskDOMElement.parentNode.removeChild(this.taskDOMElement);
     }
 
-
     addToDom(){
         var target = document.querySelector("#todoList");
-        console.log(target);
         target.appendChild(this.taskDOMElement);
     }
 
@@ -154,16 +160,31 @@ class Task {
         console.log(this.value);
     }
 
+    static incrementIndex(){
+        if(!this.latestIndex){
+            this.latestIndex = 1;
+        }
+        else {
+            this.latestIndex++;
+        }
+        return this.latestIndex;
+    }
+
 }
 
 
 
 inputBtn.addEventListener("click",function(){
+    let index = 0;
 
     taskList.push(new Task());
     taskList.forEach(function(task){
+        console.log(index);
+        index++;
         task.addToDom();
+        task.index = index;
     })
+    console.log(taskList);
     input.value = "";
     
 });
