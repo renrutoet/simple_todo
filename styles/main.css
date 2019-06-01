@@ -63,8 +63,9 @@ body {
 }
 
 #input {
+    margin: 0;
+    padding: 1em;
     border:0;
-    margin: 1em;
 }
 
 #addBtn {

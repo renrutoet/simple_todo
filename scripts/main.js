@@ -12,11 +12,9 @@ class Task {
 
     constructor(){
 
-        //context
-        this.context = {context:this};
-
         //task value
-        this.value = input.value;
+        this.value = "input.value";
+        // this.state = "display";
 
         //create li container
         this.taskDOMElement = document.createElement("li");
@@ -25,10 +23,16 @@ class Task {
         this.leftDiv = document.createElement("div");
         this.rightDiv = document.createElement("div");
 
-        this.leftDiv.innerHTML = "input.value";
+        this.leftDiv.innerHTML = this.value;
 
         this.leftDiv.classList.add("left");
         this.rightDiv.classList.add("right");
+
+        this.editInput = document.createElement("input");
+        this.editInput.placeholder = "Please enter new task";
+        this.editInput.type = "text";
+        this.editInput.value = this.value;
+        this.editInput.classList.add("hide");
 
 
         // -----------------------------------------------------------
@@ -79,14 +83,50 @@ class Task {
         //We need to use .bind() to pass in the 'context'of this task instance.
         this.deleteButton.addEventListener("click", this.deleteTask.bind(this));
 
-        this.editButton.addEventListener("click",this.toggleElements.bind(this));
+        this.editButton.addEventListener("click",this.enterEditMode.bind(this));
 
+        // ----------------------------------------------------------------
+
+        //edit mode
+
+        this.cancelButton.addEventListener("click",this.exitEditMode.bind(this));
+        this.confirmButton.addEventListener("click",this.exitEditMode.bind(this,"confirm"));
+
+        // ----------------------------------------------------------------
 
 
 
     }
 
-    toggleElements (){
+    enterEditMode(){
+        this.leftDiv.innerHTML = "";
+
+        this.editInput.value = this.value;
+
+        this.editInput.classList.toggle("hide");
+
+        this.leftDiv.appendChild(this.editInput);
+        this.toggleButtons();
+    }
+
+    exitEditMode(input){
+        if(input == "confirm"){
+        
+        this.leftDiv.innerHTML = this.editInput.value;
+        this.value = this.editInput.value;
+        this.editInput.classList.toggle("hide");
+
+        this.toggleButtons();
+        }
+        else{
+            this.leftDiv.innerHTML = this.value;
+            this.editInput.classList.toggle("hide");
+
+            this.toggleButtons();
+        }
+    }
+
+    toggleButtons (){
         this.deleteButton.classList.toggle("hide");
         this.editButton.classList.toggle("hide");
 
