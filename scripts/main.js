@@ -164,7 +164,7 @@ inputBtn.addEventListener("click",function(){
     taskList.forEach(function(task){
         task.addToDom();
     })
-    inputBtn.value = "";
+    input.value = "";
     
 });
 };
