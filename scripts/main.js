@@ -179,12 +179,10 @@ inputBtn.addEventListener("click",function(){
 
     taskList.push(new Task());
     taskList.forEach(function(task){
-        console.log(index);
         index++;
         task.addToDom();
         task.index = index;
     })
-    console.log(taskList);
     input.value = "";
     
 });
