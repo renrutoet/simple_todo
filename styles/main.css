@@ -17,6 +17,11 @@ body {
     height : 100%;
 }
 
+.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
 .main-item {
     position: absolute;
     top: 40%;
@@ -103,6 +108,7 @@ body {
 .left {
     margin-left: 10px;
     grid-column: 1;
+    margin-left: 1em;
 }
 
 .right {
@@ -110,4 +116,8 @@ body {
     align-items: stretch;
     justify-self: end;
     grid-column: 2;
+}
+
+.hide {
+    display:none;
 }
