@@ -16,6 +16,7 @@ class Task {
         //task value
         this.value = input.value;
         this.index = Task.incrementIndex();
+        this.isDone = false;
 
         //create li container
         this.taskDOMElement = document.createElement("li");
@@ -28,10 +29,7 @@ class Task {
 
         this.leftDiv.classList.add("left");
         this.rightDiv.classList.add("right");
-
-        this.leftDiv.addEventListener("click",function(){
-            this.classList.toggle("done");
-        })
+        this.rightDiv.classList.add("grid-right-buttons");
 
 
         this.editInput = document.createElement("input");
@@ -40,6 +38,7 @@ class Task {
         this.editInput.value = this.value;
         this.editInput.classList.add("hide");
 
+        this.leftDiv.addEventListener("click",this.toggleDone.bind(this));
 
         // -----------------------------------------------------------
 
@@ -63,7 +62,7 @@ class Task {
 
             //create the innerHTML
             this.cancelButton.innerHTML = "<i class=\"far fa-times-circle\"></i>";
-            this.confirmButton.innerHTML = "Confirm";
+            this.confirmButton.innerHTML = "<i class=\"fas fa-check\"></i>";
             
             //add styling
             this.cancelButton.classList.add("delete");
@@ -104,7 +103,29 @@ class Task {
 
     }
 
+    toggleDone(){
+
+        if(!this.editButton.classList.contains("hide")){
+
+        if(this.isDone){
+            this.isDone = false;
+        }
+        else {
+            this.isDone = true;
+        }
+
+        
+            this.leftDiv.classList.toggle("done");
+        }
+    }
+
     enterEditMode(){
+
+
+        if(this.isDone){
+            this.leftDiv.classList.toggle("done");
+        }
+
         this.leftDiv.innerHTML = "";
 
         this.editInput.value = this.value;
@@ -130,6 +151,9 @@ class Task {
 
             this.toggleButtons();
         }
+        if(this.isDone && !this.leftDiv.classList.contains("done")){
+            this.leftDiv.classList.toggle("done");
+        }
     }
 
     toggleButtons (){
@@ -141,23 +165,15 @@ class Task {
     }
 
     deleteTask(){
-        console.log(this.index);
-        console.log(taskList[this.index]);
-        console.log(taskList);
+
         taskList.splice(this.index - 1,1);
-        console.log(this.index);
-        console.log(taskList[this.index]);
-        console.log(taskList);
+
         this.taskDOMElement.parentNode.removeChild(this.taskDOMElement);
     }
 
     addToDom(){
         var target = document.querySelector("#todoList");
         target.appendChild(this.taskDOMElement);
-    }
-
-    logValue(){
-        console.log(this.value);
     }
 
     static incrementIndex(){

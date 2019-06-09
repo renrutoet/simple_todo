@@ -13,6 +13,11 @@ body {
     background-color: paleturquoise;
 }
 
+span {
+    min-width: 50px;
+    max-width: 51px;
+}
+
 .container {
     height : 100%;
 }
@@ -23,9 +28,9 @@ body {
 }
 
 .main-item {
-    position: absolute;
-    top: 40%;
-    left:40%;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-self: center;
     margin: 0;
     background-color: white;
     overflow: hidden;
@@ -39,19 +44,17 @@ body {
 
 .list > li {
     background-color: lightblue;
+    max-width: 100%;
 }
 
 .list > li:nth-child(2n) {
     background-color: palegoldenrod;
 }
 
-.right {
-    margin-top: auto;
-}
-
 .delete {
     padding: 0.5em;
     background-color: red;
+    min-width: 100%;
 }
 
 .delete:hover {
@@ -70,9 +73,15 @@ body {
     background-color: lightgreen;
 }
 
-
+#page {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
 
 #input {
+    width: 100%;
     height: 100%;
     border:0;
     margin: auto;
@@ -82,7 +91,6 @@ body {
 #addBtn {
     box-sizing: border-box;
     border:none;
-    margin:auto;
     padding: 1em;
     height:inherit;
 }
@@ -92,13 +100,33 @@ body {
     background-color: darkslategray;
 }
 
+#todo {
+    min-width: 250px;
+}
+
+#todoList {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+#todoList > .grid {
+    grid-template-columns: 80% 20%;
+}
+
 /* List layout */
 
 .grid {
     display: grid;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
     border:none;
+}
+
+.grid-long-then-short {
+    grid-template-columns: 90% 10%;
+}
+
+.grid-center {
+    justify-self: center;
 }
 
 .inline-test {
@@ -106,18 +134,26 @@ body {
 }
 
 .left {
+    align-self: center;
     margin-left: 10px;
     grid-column: 1;
     margin-left: 1em;
+    width: 190px;
+    word-wrap: break-word;
 }
 
 .right {
-    box-sizing: content-box;
     align-items: stretch;
     justify-self: end;
     grid-column: 2;
+    margin-top: auto;
 }
 
 .hide {
     display:none;
+}
+
+.grid-right-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%; 
 }

@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/all.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
 
     <script src="scripts/main.js"></script>
 
     <title>Basic Todo</title>
 </head>
 <body>
-    <div class="container">
+    <div id="page">
         <div class="main-item" id="todo">
-            <input type="text" placeholder="Enter Task" id="input">
-            <button id="addBtn"><i class="fas fa-plus"></i>
-            </button>
-            <ul id="todoList" class="list">
+            <div class="grid ">
+                <input type="text" placeholder="Enter Task" id="input" class="grid-center" maxlength="20">
+                <button id="addBtn"  class="right"><i class="fas fa-plus"></i></button>
+            </div>
+            <ul id="todoList" class="list grid">
                 
             </ul>
         </div>
