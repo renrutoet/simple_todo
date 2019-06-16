@@ -9,6 +9,7 @@ const list = document.querySelector("#todoList");
 const taskList = [];
 
 
+
 class Task {
 
     constructor(){
@@ -100,7 +101,6 @@ class Task {
         // ----------------------------------------------------------------
 
 
-
     }
 
     toggleDone(){
@@ -174,7 +174,12 @@ class Task {
     addToDom(){
         var target = document.querySelector("#todoList");
         target.appendChild(this.taskDOMElement);
+        // this.saveToStorage();
     }
+
+    // saveToStorage(){
+    //     localStorage.setItem("tasks",JSON.stringify(taskList));
+    // }
 
     static incrementIndex(){
         if(!this.latestIndex){
@@ -188,9 +193,43 @@ class Task {
 
 }
 
+// if(localStorage.getItem("tasks") != null){
+//     let tasks = JSON.parse(localStorage.getItem("tasks"));
 
+//     console.log(tasks);
+
+//     tasks.forEach(function(task){
+//         taskList.push(task);
+//         var target = document.querySelector("#todoList");
+//         target.appendChild(task.taskDOMElement);
+//     });
+
+//     console.log(taskList);
+// }
+
+input.addEventListener("keyup",function(){
+    event.preventDefault();
+    if(event.keyCode === 13){
+        if(!input.value == ""){
+            let index = 0;
+        
+            taskList.push(new Task());
+            taskList.forEach(function(task){
+                index++;
+                task.addToDom();
+                task.index = index;
+            })
+            input.value = "";
+            }
+            else {
+                alert("Please enter a task");
+            }
+    }
+});
 
 inputBtn.addEventListener("click",function(){
+
+    if(!input.value == ""){
     let index = 0;
 
     taskList.push(new Task());
@@ -200,7 +239,10 @@ inputBtn.addEventListener("click",function(){
         task.index = index;
     })
     input.value = "";
+    }
+    else {
+        alert("Please enter a task");
+    }
     
 });
 };
-
